@@ -8,7 +8,7 @@ load_dotenv()
 
 DATABASE_URL = os.getenv(
     'DATABASE_URL', 
-    'postgresql+asyncpg://postgres:password@localhost:5432/football_live'
+    'postgresql+asyncpg://postgres:password@localhost:5433/football_live'
 )
 
 engine = create_async_engine(DATABASE_URL, echo=True)
@@ -22,7 +22,3 @@ async_session_local = async_sessionmaker(
 
 class Base(DeclarativeBase):
     pass
-
-async def get_session():
-    async with AsyncSession() as session:
-        yield session
